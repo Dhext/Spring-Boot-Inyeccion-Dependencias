@@ -11,13 +11,26 @@ import com.bolsadeideas.springboot.di.app.model.service.IServicio;
 @Controller
 public class indexController {
 	//private miServicio servicio = new miServicio();
+	//@Autowired
+	//@Qualifier("miServicioSimple")
 	@Autowired
-	@Qualifier("miServicioSimple")
+	//@Qualifier("miServicioSimple")
 	private IServicio servicio;
+	/*
+	public indexController(IServicio servicio) {
+		this.servicio = servicio;
+	}*/
+
 	@GetMapping({"/","/home","/index"})
 	public String index(Model model) {
 		model.addAttribute("titulo","esto es un titulo");
 		model.addAttribute("objeto",servicio.operacion());
 		return "index";
 	}
+	
+	/*@Autowired
+	public void setServicio(IServicio servicio) {
+		this.servicio = servicio;
+	}*/
+	
 }
